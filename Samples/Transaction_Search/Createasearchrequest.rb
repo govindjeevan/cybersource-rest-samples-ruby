@@ -8,7 +8,7 @@ public
 class Createasearchrequest
     def run()
         request_obj = CyberSource::CreateSearchRequest.new
-        request_obj.save = False
+        request_obj.save = FALSE
         request_obj.name = "MRN"
         request_obj.timezone = "America/Chicago"
         request_obj.query = "clientReferenceInformation.code:TC50171_3 AND submitTimeUtc:[NOW/DAY-7DAYS TO NOW/DAY+1DAY}"

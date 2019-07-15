@@ -43,7 +43,7 @@ class CreatePaymentInstrumentBankAccount
         request_obj.bill_to = bill_to
 
         processing_information = CyberSource::Tmsv1paymentinstrumentsProcessingInformation.new
-        processing_information.bill_payment_program_enabled = True
+        processing_information.bill_payment_program_enabled = TRUE
         bank_transfer_options = CyberSource::Tmsv1paymentinstrumentsProcessingInformationBankTransferOptions.new
         bank_transfer_options.se_c_code = "WEB"
         processing_information.bank_transfer_options = bank_transfer_options

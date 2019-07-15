@@ -37,7 +37,7 @@ class CreatePaymentInstrumentCard
         request_obj.bill_to = bill_to
 
         processing_information = CyberSource::Tmsv1paymentinstrumentsProcessingInformation.new
-        processing_information.bill_payment_program_enabled = True
+        processing_information.bill_payment_program_enabled = TRUE
         request_obj.processing_information = processing_information
 
         instrument_identifier = CyberSource::Tmsv1paymentinstrumentsInstrumentIdentifier.new

@@ -13,7 +13,7 @@ class ElectronicCheckDebits
         request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processing_information.capture = False
+        processing_information.capture = FALSE
         processing_information.commerce_indicator = "internet"
         request_obj.processing_information = processing_information
 

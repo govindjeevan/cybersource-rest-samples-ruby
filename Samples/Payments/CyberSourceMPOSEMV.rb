@@ -13,7 +13,7 @@ class CyberSourceMPOSEMV
         request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processing_information.capture = False
+        processing_information.capture = FALSE
         processing_information.commerce_indicator = "retail"
         processing_information.payment_solution = "011"
         request_obj.processing_information = processing_information
@@ -49,7 +49,7 @@ class CyberSourceMPOSEMV
         point_of_sale_information.entry_mode = "contact"
         point_of_sale_information.terminal_capability = 1
         emv = CyberSource::Ptsv2paymentsPointOfSaleInformationEmv.new
-        emv.fallback = True
+        emv.fallback = TRUE
         emv.fallback_condition = 1
         point_of_sale_information.emv = emv
         request_obj.point_of_sale_information = point_of_sale_information

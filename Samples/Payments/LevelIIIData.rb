@@ -13,7 +13,7 @@ class LevelIIIData
         request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processing_information.capture = False
+        processing_information.capture = FALSE
         processing_information.commerce_indicator = "internet"
         processing_information.purchase_level = "3"
         request_obj.processing_information = processing_information
@@ -51,8 +51,8 @@ class LevelIIIData
         line_items1.quantity = 10
         line_items1.unit_price = "10.00"
         line_items1.total_amount = "100"
-        line_items1.amount_includes_tax = False
-        line_items1.discount_applied = False
+        line_items1.amount_includes_tax = FALSE
+        line_items1.discount_applied = FALSE
         line_items << line_items1
 
         order_information.line_items = line_items

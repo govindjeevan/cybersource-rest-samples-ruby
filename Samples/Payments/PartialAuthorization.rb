@@ -43,7 +43,7 @@ class PartialAuthorization
         point_of_sale_information.cat_level = 6
         point_of_sale_information.terminal_capability = 4
         emv = CyberSource::Ptsv2paymentsPointOfSaleInformationEmv.new
-        emv.fallback = False
+        emv.fallback = FALSE
         emv.fallback_condition = 1
         point_of_sale_information.emv = emv
         request_obj.point_of_sale_information = point_of_sale_information
