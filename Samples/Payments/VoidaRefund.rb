@@ -16,7 +16,7 @@ class VoidaRefund
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::VoidApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.void_refund( requestObj, id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

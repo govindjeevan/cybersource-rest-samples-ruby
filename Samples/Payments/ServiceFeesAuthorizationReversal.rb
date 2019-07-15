@@ -23,7 +23,7 @@ class ServiceFeesAuthorizationReversal
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::ReversalApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.auth_reversal( id, requestObj )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

@@ -6,12 +6,12 @@ require_relative '../../data/Configuration.rb'
 
 public
 class RetrieveallPaymentInstrumentsassociatedwithanInstrumentIdentifier
-    def run(profileid, tokenId)
+    def run(profileid, token_id)
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::InstrumentIdentifierApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_all_payment_instruments( profileid, token_id )
         puts data, status_code, headers
         print("Input parameter profile-id:")
         profileid = input()

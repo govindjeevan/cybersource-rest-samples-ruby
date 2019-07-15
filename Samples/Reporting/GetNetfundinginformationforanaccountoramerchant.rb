@@ -11,7 +11,7 @@ class GetNetfundinginformationforanaccountoramerchant
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::NetFundingsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_net_funding_details( )
         puts data, status_code, headers
 
 	rescue StandardError => err

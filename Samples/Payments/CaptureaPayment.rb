@@ -23,7 +23,7 @@ class CaptureaPayment
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::CaptureApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.capture_payment( requestObj, id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

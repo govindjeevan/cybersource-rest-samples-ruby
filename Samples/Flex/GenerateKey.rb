@@ -13,7 +13,7 @@ class GenerateKey
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::KeyGenerationApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.generate_public_key( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

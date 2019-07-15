@@ -19,7 +19,7 @@ class Createasearchrequest
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::SearchTransactionsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.create_search( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

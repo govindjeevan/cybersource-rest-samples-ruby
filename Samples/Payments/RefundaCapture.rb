@@ -23,7 +23,7 @@ class RefundaCapture
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::RefundApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.refund_capture( requestObj, id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

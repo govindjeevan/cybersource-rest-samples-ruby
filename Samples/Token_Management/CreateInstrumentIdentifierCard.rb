@@ -16,7 +16,7 @@ class CreateInstrumentIdentifierCard
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::InstrumentIdentifierApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.create_instrument_identifier( profileid, requestObj )
         puts data, status_code, headers
         print("Input parameter profile-id:")
         profileid = input()

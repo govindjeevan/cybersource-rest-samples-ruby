@@ -69,7 +69,7 @@ class PayoutToken
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PayoutsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.oct_create_payment( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

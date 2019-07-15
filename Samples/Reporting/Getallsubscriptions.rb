@@ -11,7 +11,7 @@ class Getallsubscriptions
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::ReportSubscriptionsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_all_subscriptions( )
         puts data, status_code, headers
 
 	rescue StandardError => err

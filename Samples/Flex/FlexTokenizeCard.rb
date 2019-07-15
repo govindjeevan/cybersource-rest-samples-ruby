@@ -20,7 +20,7 @@ class FlexTokenizeCard
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::TokenizationApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.tokenize( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

@@ -11,7 +11,7 @@ class Getindividualbatchfile
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::TransactionBatchesApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_transaction_batch_id( id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

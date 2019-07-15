@@ -6,15 +6,15 @@ require_relative '../../data/Configuration.rb'
 
 public
 class GetReportbasedonreportId
-    def run(reportId)
+    def run(report_id)
     opts = {}
 
-    opts[:"organizationId"] = "testrest"
+    opts[:"organization_id"] = "testrest"
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::ReportsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_report_by_report_id( report_id,opts )
         puts data, status_code, headers
         print("Input parameter reportId:")
         reportId = input()

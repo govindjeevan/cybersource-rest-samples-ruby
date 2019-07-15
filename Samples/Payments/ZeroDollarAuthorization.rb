@@ -48,7 +48,7 @@ class ZeroDollarAuthorization
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PaymentsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.create_payment( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

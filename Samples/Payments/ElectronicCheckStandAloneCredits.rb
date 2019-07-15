@@ -49,7 +49,7 @@ class ElectronicCheckStandAloneCredits
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::CreditApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.create_credit( requestObj )
         puts data, status_code, headers
 
 	rescue StandardError => err

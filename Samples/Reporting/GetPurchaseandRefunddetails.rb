@@ -7,21 +7,21 @@ require_relative '../../data/Configuration.rb'
 public
 class GetPurchaseandRefunddetails
     def run()
-    startTime = "2018-05-01T12:00:00-05:00"
-    endTime = "2018-05-30T12:00:00-05:00"
+    start_time = "2018-05-01T12:00:00-05:00"
+    end_time = "2018-05-30T12:00:00-05:00"
     opts = {}
 
-    opts[:"organizationId"] = "testrest"
-    opts[:"paymentSubtype"] = "VI"
-    opts[:"viewBy"] = "requestDate"
-    opts[:"groupName"] = "groupName"
+    opts[:"organization_id"] = "testrest"
+    opts[:"payment_subtype"] = "VI"
+    opts[:"view_by"] = "requestDate"
+    opts[:"group_name"] = "groupName"
     opts[:"offset"] = 20
     opts[:"limit"] = 2000
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PurchaseAndRefundDetailsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.null(request)
+        data, status_code, headers = api_instance.get_purchase_and_refund_details( start_time, end_time,opts )
         puts data, status_code, headers
 
 	rescue StandardError => err
