@@ -7,16 +7,16 @@ require_relative '../../data/Configuration.rb'
 public
 class CreateInstrumentIdentifierCard
     def run(profileid)
-        requestObj = CyberSource::CreateInstrumentIdentifierRequest.new
+        request_obj = CyberSource::CreateInstrumentIdentifierRequest.new
         card = CyberSource::Tmsv1instrumentidentifiersCard.new
         card.number = "411111111111112"
-        requestObj.card = card
+        request_obj.card = card
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::InstrumentIdentifierApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_instrument_identifier( profileid, requestObj )
+        data, status_code, headers = api_instance.create_instrument_identifier( profileid, request_obj )
         puts data, status_code, headers
         print("Input parameter profile-id:")
         profileid = input()

@@ -7,19 +7,19 @@ require_relative '../../data/Configuration.rb'
 public
 class Createasearchrequest
     def run()
-        requestObj = CyberSource::CreateSearchRequest.new
-        requestObj.save = False
-        requestObj.name = "MRN"
-        requestObj.timezone = "America/Chicago"
-        requestObj.query = "clientReferenceInformation.code:TC50171_3 AND submitTimeUtc:[NOW/DAY-7DAYS TO NOW/DAY+1DAY}"
-        requestObj.offset = 0
-        requestObj.limit = 100
-        requestObj.sort = "id:asc,submitTimeUtc:asc"
+        request_obj = CyberSource::CreateSearchRequest.new
+        request_obj.save = False
+        request_obj.name = "MRN"
+        request_obj.timezone = "America/Chicago"
+        request_obj.query = "clientReferenceInformation.code:TC50171_3 AND submitTimeUtc:[NOW/DAY-7DAYS TO NOW/DAY+1DAY}"
+        request_obj.offset = 0
+        request_obj.limit = 100
+        request_obj.sort = "id:asc,submitTimeUtc:asc"
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::SearchTransactionsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_search( requestObj )
+        data, status_code, headers = api_instance.create_search( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

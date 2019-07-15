@@ -7,20 +7,20 @@ require_relative '../../data/Configuration.rb'
 public
 class FlexTokenizeCard
     def run()
-        requestObj = CyberSource::TokenizeRequest.new
-        requestObj.key_id = "08z9hCmn4pRpdNhPJBEYR3Mc2DGLWq5j"
+        request_obj = CyberSource::TokenizeRequest.new
+        request_obj.key_id = "08z9hCmn4pRpdNhPJBEYR3Mc2DGLWq5j"
         card_info = CyberSource::Flexv1tokensCardInfo.new
         card_info.card_number = "4111111111111111"
         card_info.card_expiration_month = "12"
         card_info.card_expiration_year = "2031"
         card_info.card_type = "001"
-        requestObj.card_info = card_info
+        request_obj.card_info = card_info
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::TokenizationApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.tokenize( requestObj )
+        data, status_code, headers = api_instance.tokenize( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

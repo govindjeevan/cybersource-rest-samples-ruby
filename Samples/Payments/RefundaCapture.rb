@@ -7,23 +7,23 @@ require_relative '../../data/Configuration.rb'
 public
 class RefundaCapture
     def run(id)
-        requestObj = CyberSource::RefundCaptureRequest.new
+        request_obj = CyberSource::RefundCaptureRequest.new
         client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
         client_reference_information.code = "TC50171_3"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         order_information = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
         amount_details = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
         amount_details.total_amount = "102.21"
         amount_details.currency = "USD"
         order_information.amount_details = amount_details
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::RefundApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.refund_capture( requestObj, id )
+        data, status_code, headers = api_instance.refund_capture( request_obj, id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

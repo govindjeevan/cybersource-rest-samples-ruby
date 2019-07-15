@@ -7,15 +7,15 @@ require_relative '../../data/Configuration.rb'
 public
 class ZeroDollarAuthorization
     def run()
-        requestObj = CyberSource::CreatePaymentRequest.new
+        request_obj = CyberSource::CreatePaymentRequest.new
         client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
         client_reference_information.code = "1234567890"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
         processing_information.capture = False
         processing_information.commerce_indicator = "internet"
-        requestObj.processing_information = processing_information
+        request_obj.processing_information = processing_information
 
         payment_information = CyberSource::Ptsv2paymentsPaymentInformation.new
         card = CyberSource::Ptsv2paymentsPaymentInformationCard.new
@@ -24,7 +24,7 @@ class ZeroDollarAuthorization
         card.expiration_year = "2031"
         card.security_code = "123"
         payment_information.card = card
-        requestObj.payment_information = payment_information
+        request_obj.payment_information = payment_information
 
         order_information = CyberSource::Ptsv2paymentsOrderInformation.new
         amount_details = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
@@ -42,13 +42,13 @@ class ZeroDollarAuthorization
         bill_to.email = "test@cybs.com"
         bill_to.phone_number = "4158880000"
         order_information.bill_to = bill_to
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PaymentsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_payment( requestObj )
+        data, status_code, headers = api_instance.create_payment( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

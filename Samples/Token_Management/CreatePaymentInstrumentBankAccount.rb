@@ -7,10 +7,10 @@ require_relative '../../data/Configuration.rb'
 public
 class CreatePaymentInstrumentBankAccount
     def run(profileid)
-        requestObj = CyberSource::CreatePaymentInstrumentRequest.new
+        request_obj = CyberSource::CreatePaymentInstrumentRequest.new
         bank_account = CyberSource::Tmsv1paymentinstrumentsBankAccount.new
         bank_account.type = "savings"
-        requestObj.bank_account = bank_account
+        request_obj.bank_account = bank_account
 
         buyer_information = CyberSource::Tmsv1paymentinstrumentsBuyerInformation.new
         buyer_information.company_tax_i_d = "12345"
@@ -26,7 +26,7 @@ class CreatePaymentInstrumentBankAccount
         personal_identification << personal_identification1
 
         buyer_information.personal_identification = personal_identification
-        requestObj.buyer_information = buyer_information
+        request_obj.buyer_information = buyer_information
 
         bill_to = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo.new
         bill_to.first_name = "John"
@@ -40,33 +40,33 @@ class CreatePaymentInstrumentBankAccount
         bill_to.country = "United States"
         bill_to.email = "john.smith@test.com"
         bill_to.phone_number = "+44 2890447951"
-        requestObj.bill_to = bill_to
+        request_obj.bill_to = bill_to
 
         processing_information = CyberSource::Tmsv1paymentinstrumentsProcessingInformation.new
         processing_information.bill_payment_program_enabled = True
         bank_transfer_options = CyberSource::Tmsv1paymentinstrumentsProcessingInformationBankTransferOptions.new
         bank_transfer_options.se_c_code = "WEB"
         processing_information.bank_transfer_options = bank_transfer_options
-        requestObj.processing_information = processing_information
+        request_obj.processing_information = processing_information
 
         merchant_information = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformation.new
         merchant_descriptor = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformationMerchantDescriptor.new
         merchant_descriptor.alternate_name = "Branch Name"
         merchant_information.merchant_descriptor = merchant_descriptor
-        requestObj.merchant_information = merchant_information
+        request_obj.merchant_information = merchant_information
 
         instrument_identifier = CyberSource::Tmsv1paymentinstrumentsInstrumentIdentifier.new
         bank_account = CyberSource::TmsV1InstrumentIdentifiersPost200ResponseBankAccount.new
         bank_account.number = "4100"
         bank_account.routing_number = "071923284"
         instrument_identifier.bank_account = bank_account
-        requestObj.instrument_identifier = instrument_identifier
+        request_obj.instrument_identifier = instrument_identifier
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PaymentInstrumentApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_payment_instrument( profileid, requestObj )
+        data, status_code, headers = api_instance.create_payment_instrument( profileid, request_obj )
         puts data, status_code, headers
         print("Input parameter profile-id:")
         profileid = input()

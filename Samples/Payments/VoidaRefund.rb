@@ -7,16 +7,16 @@ require_relative '../../data/Configuration.rb'
 public
 class VoidaRefund
     def run(id)
-        requestObj = CyberSource::VoidRefundRequest.new
+        request_obj = CyberSource::VoidRefundRequest.new
         client_reference_information = CyberSource::Ptsv2paymentsidreversalsClientReferenceInformation.new
         client_reference_information.code = "test_void"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::VoidApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.void_refund( requestObj, id )
+        data, status_code, headers = api_instance.void_refund( request_obj, id )
         puts data, status_code, headers
         print("Input parameter id:")
         id = input()

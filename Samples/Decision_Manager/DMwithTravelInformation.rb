@@ -7,10 +7,10 @@ require_relative '../../data/Configuration.rb'
 public
 class DMwithTravelInformation
     def run()
-        requestObj = CyberSource::CreateDecisionManagerCaseRequest.new
+        request_obj = CyberSource::CreateDecisionManagerCaseRequest.new
         client_reference_information = CyberSource::Riskv1decisionsClientReferenceInformation.new
         client_reference_information.code = "54323007"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         payment_information = CyberSource::Riskv1decisionsPaymentInformation.new
         card = CyberSource::Riskv1decisionsPaymentInformationCard.new
@@ -18,7 +18,7 @@ class DMwithTravelInformation
         card.expiration_month = "12"
         card.expiration_year = "2020"
         payment_information.card = card
-        requestObj.payment_information = payment_information
+        request_obj.payment_information = payment_information
 
         order_information = CyberSource::Riskv1decisionsOrderInformation.new
         amount_details = CyberSource::Riskv1decisionsOrderInformationAmountDetails.new
@@ -36,7 +36,7 @@ class DMwithTravelInformation
         bill_to.email = "test@visa.com"
         bill_to.postal_code = "03055"
         order_information.bill_to = bill_to
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         travel_information = CyberSource::Riskv1decisionsTravelInformation.new
         travel_information.complete_route = "SFO-JFK:JFK-BLR"
@@ -55,13 +55,13 @@ class DMwithTravelInformation
         legs << legs2
 
         travel_information.legs = legs
-        requestObj.travel_information = travel_information
+        request_obj.travel_information = travel_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::DecisionManagerApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_decision_manager_case( requestObj )
+        data, status_code, headers = api_instance.create_decision_manager_case( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

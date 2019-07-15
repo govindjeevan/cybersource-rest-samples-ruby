@@ -7,14 +7,14 @@ require_relative '../../data/Configuration.rb'
 public
 class ElectronicCheckStandAloneCredits
     def run()
-        requestObj = CyberSource::CreateCreditRequest.new
+        request_obj = CyberSource::CreateCreditRequest.new
         client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
         client_reference_information.code = "TC46125-1"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2creditsProcessingInformation.new
         processing_information.commerce_indicator = "internet"
-        requestObj.processing_information = processing_information
+        request_obj.processing_information = processing_information
 
         payment_information = CyberSource::Ptsv2paymentsidrefundsPaymentInformation.new
         bank = CyberSource::Ptsv2paymentsPaymentInformationBank.new
@@ -25,7 +25,7 @@ class ElectronicCheckStandAloneCredits
         bank.account = account
         bank.routing_number = "071923284"
         payment_information.bank = bank
-        requestObj.payment_information = payment_information
+        request_obj.payment_information = payment_information
 
         order_information = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
         amount_details = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
@@ -43,13 +43,13 @@ class ElectronicCheckStandAloneCredits
         bill_to.email = "test@cybs.com"
         bill_to.phone_number = "4158880000"
         order_information.bill_to = bill_to
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::CreditApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_credit( requestObj )
+        data, status_code, headers = api_instance.create_credit( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

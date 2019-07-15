@@ -7,17 +7,17 @@ require_relative '../../data/Configuration.rb'
 public
 class PayoutCardnotToken
     def run()
-        requestObj = CyberSource::OctCreatePaymentRequest.new
+        request_obj = CyberSource::OctCreatePaymentRequest.new
         client_reference_information = CyberSource::Ptsv2payoutsClientReferenceInformation.new
         client_reference_information.code = "33557799"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         order_information = CyberSource::Ptsv2payoutsOrderInformation.new
         amount_details = CyberSource::Ptsv2payoutsOrderInformationAmountDetails.new
         amount_details.total_amount = "100.00"
         amount_details.currency = "USD"
         order_information.amount_details = amount_details
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         merchant_information = CyberSource::Ptsv2payoutsMerchantInformation.new
         merchant_descriptor = CyberSource::Ptsv2payoutsMerchantInformationMerchantDescriptor.new
@@ -27,7 +27,7 @@ class PayoutCardnotToken
         merchant_descriptor.administrative_area = "CA"
         merchant_descriptor.postal_code = "94440"
         merchant_information.merchant_descriptor = merchant_descriptor
-        requestObj.merchant_information = merchant_information
+        request_obj.merchant_information = merchant_information
 
         recipient_information = CyberSource::Ptsv2payoutsRecipientInformation.new
         recipient_information.first_name = "John"
@@ -38,7 +38,7 @@ class PayoutCardnotToken
         recipient_information.country = "US"
         recipient_information.postal_code = "94400"
         recipient_information.phone_number = "6504320556"
-        requestObj.recipient_information = recipient_information
+        request_obj.recipient_information = recipient_information
 
         sender_information = CyberSource::Ptsv2payoutsSenderInformation.new
         sender_information.reference_number = "1234567890"
@@ -50,13 +50,13 @@ class PayoutCardnotToken
         sender_information.locality = "Foster City"
         sender_information.administrative_area = "CA"
         sender_information.country_code = "US"
-        requestObj.sender_information = sender_information
+        request_obj.sender_information = sender_information
 
         processing_information = CyberSource::Ptsv2payoutsProcessingInformation.new
         processing_information.business_application_id = "FD"
         processing_information.network_routing_order = "V8"
         processing_information.commerce_indicator = "internet"
-        requestObj.processing_information = processing_information
+        request_obj.processing_information = processing_information
 
         payment_information = CyberSource::Ptsv2payoutsPaymentInformation.new
         card = CyberSource::Ptsv2payoutsPaymentInformationCard.new
@@ -65,13 +65,13 @@ class PayoutCardnotToken
         card.expiration_month = "12"
         card.expiration_year = "2025"
         payment_information.card = card
-        requestObj.payment_information = payment_information
+        request_obj.payment_information = payment_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PayoutsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.oct_create_payment( requestObj )
+        data, status_code, headers = api_instance.oct_create_payment( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

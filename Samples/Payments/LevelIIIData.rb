@@ -7,16 +7,16 @@ require_relative '../../data/Configuration.rb'
 public
 class LevelIIIData
     def run()
-        requestObj = CyberSource::CreatePaymentRequest.new
+        request_obj = CyberSource::CreatePaymentRequest.new
         client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
         client_reference_information.code = "TC50171_14"
-        requestObj.client_reference_information = client_reference_information
+        request_obj.client_reference_information = client_reference_information
 
         processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
         processing_information.capture = False
         processing_information.commerce_indicator = "internet"
         processing_information.purchase_level = "3"
-        requestObj.processing_information = processing_information
+        request_obj.processing_information = processing_information
 
         payment_information = CyberSource::Ptsv2paymentsPaymentInformation.new
         card = CyberSource::Ptsv2paymentsPaymentInformationCard.new
@@ -26,7 +26,7 @@ class LevelIIIData
         card.type = "001"
         card.security_code = "123"
         payment_information.card = card
-        requestObj.payment_information = payment_information
+        request_obj.payment_information = payment_information
 
         order_information = CyberSource::Ptsv2paymentsOrderInformation.new
         amount_details = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
@@ -59,13 +59,13 @@ class LevelIIIData
         invoice_details = CyberSource::Ptsv2paymentsOrderInformationInvoiceDetails.new
         invoice_details.purchase_order_number = "LevelIII Auth Po"
         order_information.invoice_details = invoice_details
-        requestObj.order_information = order_information
+        request_obj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::PaymentsApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_payment( requestObj )
+        data, status_code, headers = api_instance.create_payment( request_obj )
         puts data, status_code, headers
 
 	rescue StandardError => err

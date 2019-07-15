@@ -7,14 +7,14 @@ require_relative '../../data/Configuration.rb'
 public
 class CreateInstrumentIdentifierCardEnrollforNetworkToken
     def run(profileid)
-        requestObj = CyberSource::CreateInstrumentIdentifierRequest.new
-        requestObj.type = "enrollable card"
+        request_obj = CyberSource::CreateInstrumentIdentifierRequest.new
+        request_obj.type = "enrollable card"
         card = CyberSource::Tmsv1instrumentidentifiersCard.new
         card.number = "4622943127013705"
         card.expiration_month = "12"
         card.expiration_year = "2022"
         card.security_code = "838"
-        requestObj.card = card
+        request_obj.card = card
 
         bill_to = CyberSource::Tmsv1instrumentidentifiersBillTo.new
         bill_to.address1 = "8310 Capital of Texas Highway North"
@@ -23,13 +23,13 @@ class CreateInstrumentIdentifierCardEnrollforNetworkToken
         bill_to.administrative_area = "TX"
         bill_to.postal_code = "78731"
         bill_to.country = "US"
-        requestObj.bill_to = bill_to
+        request_obj.bill_to = bill_to
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
         api_instance = CyberSource::InstrumentIdentifierApi.new(api_client, config)
 
-        data, status_code, headers = api_instance.create_instrument_identifier( profileid, requestObj )
+        data, status_code, headers = api_instance.create_instrument_identifier( profileid, request_obj )
         puts data, status_code, headers
         print("Input parameter profile-id:")
         profileid = input()
