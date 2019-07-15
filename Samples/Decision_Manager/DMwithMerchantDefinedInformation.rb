@@ -40,12 +40,12 @@ class DMwithMerchantDefinedInformation
 
 
         merchant_defined_information = []
-        merchant_defined_information1 = Riskv1decisionsMerchantDefinedInformation()
+        merchant_defined_information1 = CyberSource::Riskv1decisionsMerchantDefinedInformation()
         merchant_defined_information1.key = "1"
         merchant_defined_information1.value = "Test"
         merchant_defined_information << merchant_defined_information1
 
-        merchant_defined_information2 = Riskv1decisionsMerchantDefinedInformation()
+        merchant_defined_information2 = CyberSource::Riskv1decisionsMerchantDefinedInformation()
         merchant_defined_information2.key = "2"
         merchant_defined_information2.value = "Test2"
         merchant_defined_information << merchant_defined_information2

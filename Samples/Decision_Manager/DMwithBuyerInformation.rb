@@ -43,7 +43,7 @@ class DMwithBuyerInformation
         buyer_information.date_of_birth = "1998-05-05"
 
         personal_identification = []
-        personal_identification1 = Ptsv2paymentsBuyerInformationPersonalIdentification()
+        personal_identification1 = CyberSource::Ptsv2paymentsBuyerInformationPersonalIdentification()
         personal_identification1.type = "CPF"
         personal_identification1.id = "1a23apwe98"
         personal_identification << personal_identification1

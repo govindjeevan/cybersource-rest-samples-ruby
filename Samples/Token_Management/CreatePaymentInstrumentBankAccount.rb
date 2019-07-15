@@ -17,7 +17,7 @@ class CreatePaymentInstrumentBankAccount
         buyer_information.currency = "USD"
 
         personal_identification = []
-        personal_identification1 = Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification()
+        personal_identification1 = CyberSource::Tmsv1paymentinstrumentsBuyerInformationPersonalIdentification()
         personal_identification1.id = "57684432111321"
         personal_identification1.type = "driver license"
         issued_by1 = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy.new
