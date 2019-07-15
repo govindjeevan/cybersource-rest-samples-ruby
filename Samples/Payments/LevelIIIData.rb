@@ -46,7 +46,7 @@ class LevelIIIData
         order_information.bill_to = bill_to
 
         line_items = []
-        line_items1 = CyberSource::Ptsv2paymentsOrderInformationLineItems()
+        line_items1 = CyberSource::Ptsv2paymentsOrderInformationLineItems.new
         line_items1.product_code = "default"
         line_items1.quantity = 10
         line_items1.unit_price = "10.00"

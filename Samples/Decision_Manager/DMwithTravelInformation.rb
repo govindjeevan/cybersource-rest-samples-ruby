@@ -44,12 +44,12 @@ class DMwithTravelInformation
         travel_information.journey_type = "One way"
 
         legs = []
-        legs1 = CyberSource::Riskv1decisionsTravelInformationLegs()
+        legs1 = CyberSource::Riskv1decisionsTravelInformationLegs.new
         legs1.origination = "SFO"
         legs1.destination = "JFK"
         legs << legs1
 
-        legs2 = CyberSource::Riskv1decisionsTravelInformationLegs()
+        legs2 = CyberSource::Riskv1decisionsTravelInformationLegs.new
         legs2.origination = "JFK"
         legs2.destination = "BLR"
         legs << legs2
