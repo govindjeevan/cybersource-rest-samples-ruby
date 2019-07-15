@@ -50,7 +50,7 @@ class DMwithBuyerInformation
         personalIdentification1.id = "1a23apwe98"
         personalIdentification << personalIdentification1
 
-        buyerInformation.personalIdentification = personalIdentification
+        buyerInformation.personal_identification = personalIdentification
         requestObj.buyerInformation = buyerInformation
 
         config = MerchantConfiguration.new.merchantConfigProp()

@@ -57,7 +57,7 @@ class LevelIIIData
         lineItems1.discountApplied = False
         lineItems << lineItems1
 
-        orderInformation.lineItems = lineItems
+        orderInformation.line_items = lineItems
         invoiceDetails = CyberSource::Ptsv2paymentsOrderInformationInvoiceDetails.new
         invoiceDetails.purchaseOrderNumber = "LevelIII Auth Po"
         orderInformation.invoiceDetails = invoiceDetails

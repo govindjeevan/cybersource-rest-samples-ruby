@@ -27,7 +27,7 @@ class CreatePaymentInstrumentBankAccount
         personalIdentification1.issuedBy = issuedBy1
         personalIdentification << personalIdentification1
 
-        buyerInformation.personalIdentification = personalIdentification
+        buyerInformation.personal_identification = personalIdentification
         requestObj.buyerInformation = buyerInformation
 
         billTo = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo.new
