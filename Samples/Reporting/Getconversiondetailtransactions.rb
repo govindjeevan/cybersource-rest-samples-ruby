@@ -19,10 +19,10 @@ class Getconversiondetailtransactions
         data, status_code, headers = api_instance.get_conversion_detail( start_time, end_time,opts )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		Getconversiondetailtransactions.new.run()
 	end
 end

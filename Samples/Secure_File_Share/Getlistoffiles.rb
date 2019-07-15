@@ -19,10 +19,10 @@ class Getlistoffiles
         data, status_code, headers = api_instance.get_file_detail( start_date, end_date,opts )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		Getlistoffiles.new.run()
 	end
 end

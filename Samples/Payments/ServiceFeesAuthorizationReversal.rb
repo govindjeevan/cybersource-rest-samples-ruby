@@ -25,13 +25,13 @@ class ServiceFeesAuthorizationReversal
 
         data, status_code, headers = api_instance.auth_reversal( id, request_obj )
         puts data, status_code, headers
-        print("Input parameter id:")
-        id = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter id:"
+        id = gets.chomp
 		ServiceFeesAuthorizationReversal.new.run(id)
 	end
 end

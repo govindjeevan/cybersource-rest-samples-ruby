@@ -57,10 +57,10 @@ class DMwithMerchantDefinedInformation
         data, status_code, headers = api_instance.create_decision_manager_case( request_obj )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		DMwithMerchantDefinedInformation.new.run()
 	end
 end

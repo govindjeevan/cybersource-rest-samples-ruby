@@ -18,10 +18,10 @@ class GetNotificationOfChanges
         data, status_code, headers = api_instance.get_notification_of_change_report( start_time, end_time )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		GetNotificationOfChanges.new.run()
 	end
 end

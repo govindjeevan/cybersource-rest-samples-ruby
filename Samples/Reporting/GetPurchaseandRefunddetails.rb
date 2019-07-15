@@ -24,10 +24,10 @@ class GetPurchaseandRefunddetails
         data, status_code, headers = api_instance.get_purchase_and_refund_details( start_time, end_time,opts )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		GetPurchaseandRefunddetails.new.run()
 	end
 end

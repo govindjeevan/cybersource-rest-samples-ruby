@@ -13,13 +13,13 @@ class GetSearchresults
 
         data, status_code, headers = api_instance.get_search( search_id )
         puts data, status_code, headers
-        print("Input parameter searchId:")
-        searchId = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter searchId:"
+        searchId = gets.chomp
 		GetSearchresults.new.run(searchId)
 	end
 end

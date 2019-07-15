@@ -13,13 +13,13 @@ class Getsubscriptionforreportname
 
         data, status_code, headers = api_instance.get_subscription( report_name )
         puts data, status_code, headers
-        print("Input parameter reportName:")
-        reportName = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter reportName:"
+        reportName = gets.chomp
 		Getsubscriptionforreportname.new.run(reportName)
 	end
 end

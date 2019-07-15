@@ -25,13 +25,13 @@ class CaptureaPayment
 
         data, status_code, headers = api_instance.capture_payment( request_obj, id )
         puts data, status_code, headers
-        print("Input parameter id:")
-        id = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter id:"
+        id = gets.chomp
 		CaptureaPayment.new.run(id)
 	end
 end

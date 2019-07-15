@@ -16,13 +16,13 @@ class Getreportdefinition
 
         data, status_code, headers = api_instance.get_resource_info_by_report_definition( report_definition_name,opts )
         puts data, status_code, headers
-        print("Input parameter reportDefinitionName:")
-        reportDefinitionName = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter reportDefinitionName:"
+        reportDefinitionName = gets.chomp
 		Getreportdefinition.new.run(reportDefinitionName)
 	end
 end

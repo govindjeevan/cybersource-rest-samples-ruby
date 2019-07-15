@@ -13,15 +13,15 @@ class RetrieveallPaymentInstrumentsassociatedwithanInstrumentIdentifier
 
         data, status_code, headers = api_instance.get_all_payment_instruments( profileid, token_id )
         puts data, status_code, headers
-        print("Input parameter profile-id:")
-        profileid = input()
-        print("Input parameter tokenId:")
-        tokenId = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter profile-id:"
+        profileid = gets.chomp
+        puts "Input parameter tokenId:"
+        tokenId = gets.chomp
 		RetrieveallPaymentInstrumentsassociatedwithanInstrumentIdentifier.new.run(profileid, tokenId)
 	end
 end

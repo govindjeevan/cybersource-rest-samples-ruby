@@ -18,13 +18,13 @@ class CreateInstrumentIdentifierCard
 
         data, status_code, headers = api_instance.create_instrument_identifier( profileid, request_obj )
         puts data, status_code, headers
-        print("Input parameter profile-id:")
-        profileid = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter profile-id:"
+        profileid = gets.chomp
 		CreateInstrumentIdentifierCard.new.run(profileid)
 	end
 end

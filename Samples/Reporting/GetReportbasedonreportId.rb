@@ -16,13 +16,13 @@ class GetReportbasedonreportId
 
         data, status_code, headers = api_instance.get_report_by_report_id( report_id,opts )
         puts data, status_code, headers
-        print("Input parameter reportId:")
-        reportId = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter reportId:"
+        reportId = gets.chomp
 		GetReportbasedonreportId.new.run(reportId)
 	end
 end

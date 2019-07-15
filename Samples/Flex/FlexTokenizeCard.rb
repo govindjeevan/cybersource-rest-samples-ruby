@@ -23,10 +23,10 @@ class FlexTokenizeCard
         data, status_code, headers = api_instance.tokenize( request_obj )
         puts data, status_code, headers
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
 		FlexTokenizeCard.new.run()
 	end
 end

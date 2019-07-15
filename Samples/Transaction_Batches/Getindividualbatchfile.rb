@@ -13,13 +13,13 @@ class Getindividualbatchfile
 
         data, status_code, headers = api_instance.get_transaction_batch_id( id )
         puts data, status_code, headers
-        print("Input parameter id:")
-        id = input()
 
-	rescue StandardError => err
-		puts err.message
-	end
-	if __FILE__ == $0
+    rescue StandardError => err
+        puts err.message
+    end
+    if __FILE__ == $0
+        puts "Input parameter id:"
+        id = gets.chomp
 		Getindividualbatchfile.new.run(id)
 	end
 end
