@@ -2,57 +2,55 @@
 # Code Generated: createPayment[Simple Authorization(Retail)]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class SimpleAuthorizationRetail
     def run()
         requestObj = CyberSource::CreatePaymentRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "TC50171_8"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "TC50171_8"
+        requestObj.client_reference_information = client_reference_information
 
-        processingInformation = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processingInformation.capture = False
-        processingInformation.commerceIndicator = "retail"
-        requestObj.processingInformation = processingInformation
+        processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
+        processing_information.capture = False
+        processing_information.commerce_indicator = "retail"
+        requestObj.processing_information = processing_information
 
-        paymentInformation = CyberSource::Ptsv2paymentsPaymentInformation.new
+        payment_information = CyberSource::Ptsv2paymentsPaymentInformation.new
         card = CyberSource::Ptsv2paymentsPaymentInformationCard.new
         card.number = "5555555555554444"
-        card.expirationMonth = "12"
-        card.expirationYear = "2031"
+        card.expiration_month = "12"
+        card.expiration_year = "2031"
         card.type = "002"
-        card.securityCode = "123"
-        paymentInformation.card = card
-        requestObj.paymentInformation = paymentInformation
+        card.security_code = "123"
+        payment_information.card = card
+        requestObj.payment_information = payment_information
 
-        orderInformation = CyberSource::Ptsv2paymentsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "108.00"
-        amountDetails.currency = "USD"
-        orderInformation.amountDetails = amountDetails
-        billTo = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
-        billTo.firstName = "John"
-        billTo.lastName = "Doe"
-        billTo.address1 = "1 Market St"
-        billTo.address2 = "Address 2"
-        billTo.locality = "san francisco"
-        billTo.administrativeArea = "CA"
-        billTo.postalCode = "94105"
-        billTo.country = "US"
-        billTo.email = "test@cybs.com"
-        billTo.phoneNumber = "4158880000"
-        orderInformation.billTo = billTo
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
+        amount_details.total_amount = "108.00"
+        amount_details.currency = "USD"
+        order_information.amount_details = amount_details
+        bill_to = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
+        bill_to.first_name = "John"
+        bill_to.last_name = "Doe"
+        bill_to.address1 = "1 Market St"
+        bill_to.address2 = "Address 2"
+        bill_to.locality = "san francisco"
+        bill_to.administrative_area = "CA"
+        bill_to.postal_code = "94105"
+        bill_to.country = "US"
+        bill_to.email = "test@cybs.com"
+        bill_to.phone_number = "4158880000"
+        order_information.bill_to = bill_to
+        requestObj.order_information = order_information
 
-        pointOfSaleInformation = CyberSource::Ptsv2paymentsPointOfSaleInformation.new
-        pointOfSaleInformation.terminalId = "001"
-        pointOfSaleInformation.entryMode = "keyed"
-        pointOfSaleInformation.terminalCapability = 2
-        requestObj.pointOfSaleInformation = pointOfSaleInformation
+        point_of_sale_information = CyberSource::Ptsv2paymentsPointOfSaleInformation.new
+        point_of_sale_information.terminal_id = "001"
+        point_of_sale_information.entry_mode = "keyed"
+        point_of_sale_information.terminal_capability = 2
+        requestObj.point_of_sale_information = point_of_sale_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

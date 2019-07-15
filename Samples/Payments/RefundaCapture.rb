@@ -2,24 +2,22 @@
 # Code Generated: refundCapture[Refund a Capture]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class RefundaCapture
     def run(id)
         requestObj = CyberSource::RefundCaptureRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "TC50171_3"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "TC50171_3"
+        requestObj.client_reference_information = client_reference_information
 
-        orderInformation = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "102.21"
-        amountDetails.currency = "USD"
-        orderInformation.amountDetails = amountDetails
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
+        amount_details.total_amount = "102.21"
+        amount_details.currency = "USD"
+        order_information.amount_details = amount_details
+        requestObj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

@@ -2,9 +2,7 @@
 # Code Generated: getTransactionBatchId[Get individual batch file]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class Getindividualbatchfile

@@ -2,21 +2,19 @@
 # Code Generated: tokenize[Flex Tokenize Card]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class FlexTokenizeCard
     def run()
         requestObj = CyberSource::TokenizeRequest.new
-        requestObj.keyId = "08z9hCmn4pRpdNhPJBEYR3Mc2DGLWq5j"
-        cardInfo = CyberSource::Flexv1tokensCardInfo.new
-        cardInfo.cardNumber = "4111111111111111"
-        cardInfo.cardExpirationMonth = "12"
-        cardInfo.cardExpirationYear = "2031"
-        cardInfo.cardType = "001"
-        requestObj.cardInfo = cardInfo
+        requestObj.key_id = "08z9hCmn4pRpdNhPJBEYR3Mc2DGLWq5j"
+        card_info = CyberSource::Flexv1tokensCardInfo.new
+        card_info.card_number = "4111111111111111"
+        card_info.card_expiration_month = "12"
+        card_info.card_expiration_year = "2031"
+        card_info.card_type = "001"
+        requestObj.card_info = card_info
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

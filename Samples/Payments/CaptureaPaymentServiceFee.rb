@@ -2,33 +2,31 @@
 # Code Generated: capturePayment[Capture a Payment - Service Fee]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class CaptureaPaymentServiceFee
     def run(id)
         requestObj = CyberSource::CapturePaymentRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "TC50171_3"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "TC50171_3"
+        requestObj.client_reference_information = client_reference_information
 
-        orderInformation = CyberSource::Ptsv2paymentsidcapturesOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "2325.00"
-        amountDetails.currency = "USD"
-        amountDetails.serviceFeeAmount = "30.0"
-        orderInformation.amountDetails = amountDetails
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsidcapturesOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
+        amount_details.total_amount = "2325.00"
+        amount_details.currency = "USD"
+        amount_details.service_fee_amount = "30.0"
+        order_information.amount_details = amount_details
+        requestObj.order_information = order_information
 
-        merchantInformation = CyberSource::Ptsv2paymentsidcapturesMerchantInformation.new
-        serviceFeeDescriptor = CyberSource::Ptsv2paymentsMerchantInformationServiceFeeDescriptor.new
-        serviceFeeDescriptor.name = "CyberVacations Service Fee"
-        serviceFeeDescriptor.contact = "800-999-9999"
-        serviceFeeDescriptor.state = "CA"
-        merchantInformation.serviceFeeDescriptor = serviceFeeDescriptor
-        requestObj.merchantInformation = merchantInformation
+        merchant_information = CyberSource::Ptsv2paymentsidcapturesMerchantInformation.new
+        service_fee_descriptor = CyberSource::Ptsv2paymentsMerchantInformationServiceFeeDescriptor.new
+        service_fee_descriptor.name = "CyberVacations Service Fee"
+        service_fee_descriptor.contact = "800-999-9999"
+        service_fee_descriptor.state = "CA"
+        merchant_information.service_fee_descriptor = service_fee_descriptor
+        requestObj.merchant_information = merchant_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

@@ -2,9 +2,7 @@
 # Code Generated: getTransaction[Retrieve a Transaction]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class RetrieveaTransaction

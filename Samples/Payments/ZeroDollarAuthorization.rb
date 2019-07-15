@@ -2,49 +2,47 @@
 # Code Generated: createPayment[Zero Dollar Authorization]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class ZeroDollarAuthorization
     def run()
         requestObj = CyberSource::CreatePaymentRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "1234567890"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "1234567890"
+        requestObj.client_reference_information = client_reference_information
 
-        processingInformation = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processingInformation.capture = False
-        processingInformation.commerceIndicator = "internet"
-        requestObj.processingInformation = processingInformation
+        processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
+        processing_information.capture = False
+        processing_information.commerce_indicator = "internet"
+        requestObj.processing_information = processing_information
 
-        paymentInformation = CyberSource::Ptsv2paymentsPaymentInformation.new
+        payment_information = CyberSource::Ptsv2paymentsPaymentInformation.new
         card = CyberSource::Ptsv2paymentsPaymentInformationCard.new
         card.number = "5555555555554444"
-        card.expirationMonth = "12"
-        card.expirationYear = "2031"
-        card.securityCode = "123"
-        paymentInformation.card = card
-        requestObj.paymentInformation = paymentInformation
+        card.expiration_month = "12"
+        card.expiration_year = "2031"
+        card.security_code = "123"
+        payment_information.card = card
+        requestObj.payment_information = payment_information
 
-        orderInformation = CyberSource::Ptsv2paymentsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "0"
-        amountDetails.currency = "USD"
-        orderInformation.amountDetails = amountDetails
-        billTo = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
-        billTo.firstName = "John"
-        billTo.lastName = "Doe"
-        billTo.address1 = "1 Market St"
-        billTo.locality = "san francisco"
-        billTo.administrativeArea = "CA"
-        billTo.postalCode = "94105"
-        billTo.country = "US"
-        billTo.email = "test@cybs.com"
-        billTo.phoneNumber = "4158880000"
-        orderInformation.billTo = billTo
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
+        amount_details.total_amount = "0"
+        amount_details.currency = "USD"
+        order_information.amount_details = amount_details
+        bill_to = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
+        bill_to.first_name = "John"
+        bill_to.last_name = "Doe"
+        bill_to.address1 = "1 Market St"
+        bill_to.locality = "san francisco"
+        bill_to.administrative_area = "CA"
+        bill_to.postal_code = "94105"
+        bill_to.country = "US"
+        bill_to.email = "test@cybs.com"
+        bill_to.phone_number = "4158880000"
+        order_information.bill_to = bill_to
+        requestObj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

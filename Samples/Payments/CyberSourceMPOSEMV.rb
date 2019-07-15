@@ -2,59 +2,57 @@
 # Code Generated: createPayment[CyberSource MPOS - EMV]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class CyberSourceMPOSEMV
     def run()
         requestObj = CyberSource::CreatePaymentRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "TC50171_16"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "TC50171_16"
+        requestObj.client_reference_information = client_reference_information
 
-        processingInformation = CyberSource::Ptsv2paymentsProcessingInformation.new
-        processingInformation.capture = False
-        processingInformation.commerceIndicator = "retail"
-        processingInformation.paymentSolution = "011"
-        requestObj.processingInformation = processingInformation
+        processing_information = CyberSource::Ptsv2paymentsProcessingInformation.new
+        processing_information.capture = False
+        processing_information.commerce_indicator = "retail"
+        processing_information.payment_solution = "011"
+        requestObj.processing_information = processing_information
 
-        paymentInformation = CyberSource::Ptsv2paymentsPaymentInformation.new
-        fluidData = CyberSource::Ptsv2paymentsPaymentInformationFluidData.new
-        fluidData.descriptor = "EMV.PAYMENT.AnywhereCommerce.Walker"
-        fluidData.value = "ewogICJkYXRhIiA6ICJOZmNwRURiK1dLdzBnQkpsaTRcL1hlWm1ITzdUSng0bnRoMnc2Mk9ITVJQK3hCRlFPdFE0WWpRcnY0RmFkOHh6VExqT2VFQm5iNHFzeGZMYTNyNXcxVEdXblFGQnNzMWtPYnA0XC95alNtVE1JSGVjbGc5OFROaEhNb0VRcjJkRkFqYVpBTFAxSlBsdVhKSVwvbTZKSmVwNGh3VHRWZE16Z2laSUhnaWFCYzNXZVd1ZnYzc1l0cGRaZDZYZENEUFdLeXFkYjBJdUtkdkpBPT0iLAogICJzaWduYXR1cmUiIDogIkFxck1pKzc0cm1GeVBKVE9HN3NuN2p5K1YxTlpBZUNJVE56TW01N1B5cmc9IiwKICAic2lnbmF0dXJlQWxnSW5mbyIgOiAiSE1BQ3dpdGhTSEEyNTYiLAogICJoZWFkZXIiIDogewogICAgInRyYW5zYWN0aW9uSWQiIDogIjE1MTU2MjI2NjIuMTcyMjIwIiwKICAgICJwdWJsaWNLZXlIYXNoIiA6ICJcLzdmdldqRVhMazJPRWpcL3Z5bk1jeEZvMmRWSTlpRXVoT2Nab0tHQnpGTmM9IiwKICAgICJhcHBsaWNhdGlvbkRhdGEiIDogIkN5YmVyU291cmNlLlZNcG9zS2l0IiwKICAgICJlcGhlbWVyYWxQdWJsaWNLZXkiIDogIk1Ga3dFd1lIS29aSXpqMENBUVlJS29aSXpqMERBUWNEUWdBRW1JN0tScnRNN2NNelk5Zmw2UWt2NEQzdE9jU0NYR1hoOFwvK2R4K2s5c1Zrbk05UFQrOXRqMzk2YWF6QjRcL0hYaWlLRW9DXC9jUzdoSzF6UFk3MVwvN0pUUT09IgogIH0sCiAgInZlcnNpb24iIDogIjEuMCIKfQ=="
-        paymentInformation.fluidData = fluidData
-        requestObj.paymentInformation = paymentInformation
+        payment_information = CyberSource::Ptsv2paymentsPaymentInformation.new
+        fluid_data = CyberSource::Ptsv2paymentsPaymentInformationFluidData.new
+        fluid_data.descriptor = "EMV.PAYMENT.AnywhereCommerce.Walker"
+        fluid_data.value = "ewogICJkYXRhIiA6ICJOZmNwRURiK1dLdzBnQkpsaTRcL1hlWm1ITzdUSng0bnRoMnc2Mk9ITVJQK3hCRlFPdFE0WWpRcnY0RmFkOHh6VExqT2VFQm5iNHFzeGZMYTNyNXcxVEdXblFGQnNzMWtPYnA0XC95alNtVE1JSGVjbGc5OFROaEhNb0VRcjJkRkFqYVpBTFAxSlBsdVhKSVwvbTZKSmVwNGh3VHRWZE16Z2laSUhnaWFCYzNXZVd1ZnYzc1l0cGRaZDZYZENEUFdLeXFkYjBJdUtkdkpBPT0iLAogICJzaWduYXR1cmUiIDogIkFxck1pKzc0cm1GeVBKVE9HN3NuN2p5K1YxTlpBZUNJVE56TW01N1B5cmc9IiwKICAic2lnbmF0dXJlQWxnSW5mbyIgOiAiSE1BQ3dpdGhTSEEyNTYiLAogICJoZWFkZXIiIDogewogICAgInRyYW5zYWN0aW9uSWQiIDogIjE1MTU2MjI2NjIuMTcyMjIwIiwKICAgICJwdWJsaWNLZXlIYXNoIiA6ICJcLzdmdldqRVhMazJPRWpcL3Z5bk1jeEZvMmRWSTlpRXVoT2Nab0tHQnpGTmM9IiwKICAgICJhcHBsaWNhdGlvbkRhdGEiIDogIkN5YmVyU291cmNlLlZNcG9zS2l0IiwKICAgICJlcGhlbWVyYWxQdWJsaWNLZXkiIDogIk1Ga3dFd1lIS29aSXpqMENBUVlJS29aSXpqMERBUWNEUWdBRW1JN0tScnRNN2NNelk5Zmw2UWt2NEQzdE9jU0NYR1hoOFwvK2R4K2s5c1Zrbk05UFQrOXRqMzk2YWF6QjRcL0hYaWlLRW9DXC9jUzdoSzF6UFk3MVwvN0pUUT09IgogIH0sCiAgInZlcnNpb24iIDogIjEuMCIKfQ=="
+        payment_information.fluid_data = fluid_data
+        requestObj.payment_information = payment_information
 
-        orderInformation = CyberSource::Ptsv2paymentsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "15.0"
-        amountDetails.currency = "USD"
-        orderInformation.amountDetails = amountDetails
-        billTo = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
-        billTo.firstName = "John"
-        billTo.lastName = "Doe"
-        billTo.address1 = "1 Market St"
-        billTo.address2 = "Address 2"
-        billTo.locality = "san francisco"
-        billTo.administrativeArea = "CA"
-        billTo.postalCode = "94105"
-        billTo.country = "US"
-        billTo.email = "test@cybs.com"
-        billTo.phoneNumber = "4158880000"
-        orderInformation.billTo = billTo
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsOrderInformationAmountDetails.new
+        amount_details.total_amount = "15.0"
+        amount_details.currency = "USD"
+        order_information.amount_details = amount_details
+        bill_to = CyberSource::Ptsv2paymentsOrderInformationBillTo.new
+        bill_to.first_name = "John"
+        bill_to.last_name = "Doe"
+        bill_to.address1 = "1 Market St"
+        bill_to.address2 = "Address 2"
+        bill_to.locality = "san francisco"
+        bill_to.administrative_area = "CA"
+        bill_to.postal_code = "94105"
+        bill_to.country = "US"
+        bill_to.email = "test@cybs.com"
+        bill_to.phone_number = "4158880000"
+        order_information.bill_to = bill_to
+        requestObj.order_information = order_information
 
-        pointOfSaleInformation = CyberSource::Ptsv2paymentsPointOfSaleInformation.new
-        pointOfSaleInformation.catLevel = 1
-        pointOfSaleInformation.entryMode = "contact"
-        pointOfSaleInformation.terminalCapability = 1
+        point_of_sale_information = CyberSource::Ptsv2paymentsPointOfSaleInformation.new
+        point_of_sale_information.cat_level = 1
+        point_of_sale_information.entry_mode = "contact"
+        point_of_sale_information.terminal_capability = 1
         emv = CyberSource::Ptsv2paymentsPointOfSaleInformationEmv.new
         emv.fallback = True
-        emv.fallbackCondition = 1
-        pointOfSaleInformation.emv = emv
-        requestObj.pointOfSaleInformation = pointOfSaleInformation
+        emv.fallback_condition = 1
+        point_of_sale_information.emv = emv
+        requestObj.point_of_sale_information = point_of_sale_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

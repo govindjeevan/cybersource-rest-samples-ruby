@@ -2,17 +2,15 @@
 # Code Generated: voidRefund[Void a Refund]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class VoidaRefund
     def run(id)
         requestObj = CyberSource::VoidRefundRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsidreversalsClientReferenceInformation.new
-        clientReferenceInformation.code = "test_void"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsidreversalsClientReferenceInformation.new
+        client_reference_information.code = "test_void"
+        requestObj.client_reference_information = client_reference_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

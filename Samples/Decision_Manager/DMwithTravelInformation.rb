@@ -2,48 +2,46 @@
 # Code Generated: createDecisionManagerCase[DM with Travel Information]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class DMwithTravelInformation
     def run()
         requestObj = CyberSource::CreateDecisionManagerCaseRequest.new
-        clientReferenceInformation = CyberSource::Riskv1decisionsClientReferenceInformation.new
-        clientReferenceInformation.code = "54323007"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Riskv1decisionsClientReferenceInformation.new
+        client_reference_information.code = "54323007"
+        requestObj.client_reference_information = client_reference_information
 
-        paymentInformation = CyberSource::Riskv1decisionsPaymentInformation.new
+        payment_information = CyberSource::Riskv1decisionsPaymentInformation.new
         card = CyberSource::Riskv1decisionsPaymentInformationCard.new
         card.number = "4444444444444448"
-        card.expirationMonth = "12"
-        card.expirationYear = "2020"
-        paymentInformation.card = card
-        requestObj.paymentInformation = paymentInformation
+        card.expiration_month = "12"
+        card.expiration_year = "2020"
+        payment_information.card = card
+        requestObj.payment_information = payment_information
 
-        orderInformation = CyberSource::Riskv1decisionsOrderInformation.new
-        amountDetails = CyberSource::Riskv1decisionsOrderInformationAmountDetails.new
-        amountDetails.currency = "USD"
-        amountDetails.totalAmount = "144.14"
-        orderInformation.amountDetails = amountDetails
-        billTo = CyberSource::Riskv1decisionsOrderInformationBillTo.new
-        billTo.address1 = "96, powers street"
-        billTo.administrativeArea = "NH"
-        billTo.country = "US"
-        billTo.locality = "Clearwater milford"
-        billTo.firstName = "James"
-        billTo.lastName = "Smith"
-        billTo.phoneNumber = "7606160717"
-        billTo.email = "test@visa.com"
-        billTo.postalCode = "03055"
-        orderInformation.billTo = billTo
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Riskv1decisionsOrderInformation.new
+        amount_details = CyberSource::Riskv1decisionsOrderInformationAmountDetails.new
+        amount_details.currency = "USD"
+        amount_details.total_amount = "144.14"
+        order_information.amount_details = amount_details
+        bill_to = CyberSource::Riskv1decisionsOrderInformationBillTo.new
+        bill_to.address1 = "96, powers street"
+        bill_to.administrative_area = "NH"
+        bill_to.country = "US"
+        bill_to.locality = "Clearwater milford"
+        bill_to.first_name = "James"
+        bill_to.last_name = "Smith"
+        bill_to.phone_number = "7606160717"
+        bill_to.email = "test@visa.com"
+        bill_to.postal_code = "03055"
+        order_information.bill_to = bill_to
+        requestObj.order_information = order_information
 
-        travelInformation = CyberSource::Riskv1decisionsTravelInformation.new
-        travelInformation.completeRoute = "SFO-JFK:JFK-BLR"
-        travelInformation.departureTime = "2011-03-20 11:30pm GMT"
-        travelInformation.journeyType = "One way"
+        travel_information = CyberSource::Riskv1decisionsTravelInformation.new
+        travel_information.complete_route = "SFO-JFK:JFK-BLR"
+        travel_information.departure_time = "2011-03-20 11:30pm GMT"
+        travel_information.journey_type = "One way"
 
         legs = []
         legs1 = Riskv1decisionsTravelInformationLegs()
@@ -56,8 +54,8 @@ class DMwithTravelInformation
         legs2.destination = "BLR"
         legs << legs2
 
-        travelInformation.legs = legs
-        requestObj.travelInformation = travelInformation
+        travel_information.legs = legs
+        requestObj.travel_information = travel_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

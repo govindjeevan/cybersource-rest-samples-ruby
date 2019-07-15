@@ -2,44 +2,42 @@
 # Code Generated: createCredit[Credit]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class Credit
     def run()
         requestObj = CyberSource::CreateCreditRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsClientReferenceInformation.new
-        clientReferenceInformation.code = "12345678"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsClientReferenceInformation.new
+        client_reference_information.code = "12345678"
+        requestObj.client_reference_information = client_reference_information
 
-        paymentInformation = CyberSource::Ptsv2paymentsidrefundsPaymentInformation.new
+        payment_information = CyberSource::Ptsv2paymentsidrefundsPaymentInformation.new
         card = CyberSource::Ptsv2paymentsidrefundsPaymentInformationCard.new
         card.number = "4111111111111111"
-        card.expirationMonth = "03"
-        card.expirationYear = "2031"
+        card.expiration_month = "03"
+        card.expiration_year = "2031"
         card.type = "001"
-        paymentInformation.card = card
-        requestObj.paymentInformation = paymentInformation
+        payment_information.card = card
+        requestObj.payment_information = payment_information
 
-        orderInformation = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "200"
-        amountDetails.currency = "usd"
-        orderInformation.amountDetails = amountDetails
-        billTo = CyberSource::Ptsv2paymentsidcapturesOrderInformationBillTo.new
-        billTo.firstName = "John"
-        billTo.lastName = "Deo"
-        billTo.address1 = "900 Metro Center Blvd"
-        billTo.locality = "Foster City"
-        billTo.administrativeArea = "CA"
-        billTo.postalCode = "48104-2201"
-        billTo.country = "US"
-        billTo.email = "test@cybs.com"
-        billTo.phoneNumber = "9321499232"
-        orderInformation.billTo = billTo
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2paymentsidrefundsOrderInformation.new
+        amount_details = CyberSource::Ptsv2paymentsidcapturesOrderInformationAmountDetails.new
+        amount_details.total_amount = "200"
+        amount_details.currency = "usd"
+        order_information.amount_details = amount_details
+        bill_to = CyberSource::Ptsv2paymentsidcapturesOrderInformationBillTo.new
+        bill_to.first_name = "John"
+        bill_to.last_name = "Deo"
+        bill_to.address1 = "900 Metro Center Blvd"
+        bill_to.locality = "Foster City"
+        bill_to.administrative_area = "CA"
+        bill_to.postal_code = "48104-2201"
+        bill_to.country = "US"
+        bill_to.email = "test@cybs.com"
+        bill_to.phone_number = "9321499232"
+        order_information.bill_to = bill_to
+        requestObj.order_information = order_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

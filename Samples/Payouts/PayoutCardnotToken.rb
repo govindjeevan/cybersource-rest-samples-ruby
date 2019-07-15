@@ -2,72 +2,70 @@
 # Code Generated: octCreatePayment[Payout (Card not Token)]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class PayoutCardnotToken
     def run()
         requestObj = CyberSource::OctCreatePaymentRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2payoutsClientReferenceInformation.new
-        clientReferenceInformation.code = "33557799"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2payoutsClientReferenceInformation.new
+        client_reference_information.code = "33557799"
+        requestObj.client_reference_information = client_reference_information
 
-        orderInformation = CyberSource::Ptsv2payoutsOrderInformation.new
-        amountDetails = CyberSource::Ptsv2payoutsOrderInformationAmountDetails.new
-        amountDetails.totalAmount = "100.00"
-        amountDetails.currency = "USD"
-        orderInformation.amountDetails = amountDetails
-        requestObj.orderInformation = orderInformation
+        order_information = CyberSource::Ptsv2payoutsOrderInformation.new
+        amount_details = CyberSource::Ptsv2payoutsOrderInformationAmountDetails.new
+        amount_details.total_amount = "100.00"
+        amount_details.currency = "USD"
+        order_information.amount_details = amount_details
+        requestObj.order_information = order_information
 
-        merchantInformation = CyberSource::Ptsv2payoutsMerchantInformation.new
-        merchantDescriptor = CyberSource::Ptsv2payoutsMerchantInformationMerchantDescriptor.new
-        merchantDescriptor.name = "Sending Company Name"
-        merchantDescriptor.locality = "FC"
-        merchantDescriptor.country = "US"
-        merchantDescriptor.administrativeArea = "CA"
-        merchantDescriptor.postalCode = "94440"
-        merchantInformation.merchantDescriptor = merchantDescriptor
-        requestObj.merchantInformation = merchantInformation
+        merchant_information = CyberSource::Ptsv2payoutsMerchantInformation.new
+        merchant_descriptor = CyberSource::Ptsv2payoutsMerchantInformationMerchantDescriptor.new
+        merchant_descriptor.name = "Sending Company Name"
+        merchant_descriptor.locality = "FC"
+        merchant_descriptor.country = "US"
+        merchant_descriptor.administrative_area = "CA"
+        merchant_descriptor.postal_code = "94440"
+        merchant_information.merchant_descriptor = merchant_descriptor
+        requestObj.merchant_information = merchant_information
 
-        recipientInformation = CyberSource::Ptsv2payoutsRecipientInformation.new
-        recipientInformation.firstName = "John"
-        recipientInformation.lastName = "Doe"
-        recipientInformation.address1 = "Paseo Padre Boulevard"
-        recipientInformation.locality = "Foster City"
-        recipientInformation.administrativeArea = "CA"
-        recipientInformation.country = "US"
-        recipientInformation.postalCode = "94400"
-        recipientInformation.phoneNumber = "6504320556"
-        requestObj.recipientInformation = recipientInformation
+        recipient_information = CyberSource::Ptsv2payoutsRecipientInformation.new
+        recipient_information.first_name = "John"
+        recipient_information.last_name = "Doe"
+        recipient_information.address1 = "Paseo Padre Boulevard"
+        recipient_information.locality = "Foster City"
+        recipient_information.administrative_area = "CA"
+        recipient_information.country = "US"
+        recipient_information.postal_code = "94400"
+        recipient_information.phone_number = "6504320556"
+        requestObj.recipient_information = recipient_information
 
-        senderInformation = CyberSource::Ptsv2payoutsSenderInformation.new
-        senderInformation.referenceNumber = "1234567890"
+        sender_information = CyberSource::Ptsv2payoutsSenderInformation.new
+        sender_information.reference_number = "1234567890"
         account = CyberSource::Ptsv2payoutsSenderInformationAccount.new
-        account.fundsSource = "05"
-        senderInformation.account = account
-        senderInformation.name = "Company Name"
-        senderInformation.address1 = "900 Metro Center Blvd.900"
-        senderInformation.locality = "Foster City"
-        senderInformation.administrativeArea = "CA"
-        senderInformation.countryCode = "US"
-        requestObj.senderInformation = senderInformation
+        account.funds_source = "05"
+        sender_information.account = account
+        sender_information.name = "Company Name"
+        sender_information.address1 = "900 Metro Center Blvd.900"
+        sender_information.locality = "Foster City"
+        sender_information.administrative_area = "CA"
+        sender_information.country_code = "US"
+        requestObj.sender_information = sender_information
 
-        processingInformation = CyberSource::Ptsv2payoutsProcessingInformation.new
-        processingInformation.businessApplicationId = "FD"
-        processingInformation.networkRoutingOrder = "V8"
-        processingInformation.commerceIndicator = "internet"
-        requestObj.processingInformation = processingInformation
+        processing_information = CyberSource::Ptsv2payoutsProcessingInformation.new
+        processing_information.business_application_id = "FD"
+        processing_information.network_routing_order = "V8"
+        processing_information.commerce_indicator = "internet"
+        requestObj.processing_information = processing_information
 
-        paymentInformation = CyberSource::Ptsv2payoutsPaymentInformation.new
+        payment_information = CyberSource::Ptsv2payoutsPaymentInformation.new
         card = CyberSource::Ptsv2payoutsPaymentInformationCard.new
         card.type = "001"
         card.number = "4111111111111111"
-        card.expirationMonth = "12"
-        card.expirationYear = "2025"
-        paymentInformation.card = card
-        requestObj.paymentInformation = paymentInformation
+        card.expiration_month = "12"
+        card.expiration_year = "2025"
+        payment_information.card = card
+        requestObj.payment_information = payment_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

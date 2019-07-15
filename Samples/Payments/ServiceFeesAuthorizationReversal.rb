@@ -2,24 +2,22 @@
 # Code Generated: authReversal[Service Fees Authorization Reversal]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class ServiceFeesAuthorizationReversal
     def run(id)
         requestObj = CyberSource::AuthReversalRequest.new
-        clientReferenceInformation = CyberSource::Ptsv2paymentsidreversalsClientReferenceInformation.new
-        clientReferenceInformation.code = "TC50171_3"
-        requestObj.clientReferenceInformation = clientReferenceInformation
+        client_reference_information = CyberSource::Ptsv2paymentsidreversalsClientReferenceInformation.new
+        client_reference_information.code = "TC50171_3"
+        requestObj.client_reference_information = client_reference_information
 
-        reversalInformation = CyberSource::Ptsv2paymentsidreversalsReversalInformation.new
-        amountDetails = CyberSource::Ptsv2paymentsidreversalsReversalInformationAmountDetails.new
-        amountDetails.totalAmount = "2325.00"
-        reversalInformation.amountDetails = amountDetails
-        reversalInformation.reason = "34"
-        requestObj.reversalInformation = reversalInformation
+        reversal_information = CyberSource::Ptsv2paymentsidreversalsReversalInformation.new
+        amount_details = CyberSource::Ptsv2paymentsidreversalsReversalInformationAmountDetails.new
+        amount_details.total_amount = "2325.00"
+        reversal_information.amount_details = amount_details
+        reversal_information.reason = "34"
+        requestObj.reversal_information = reversal_information
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new

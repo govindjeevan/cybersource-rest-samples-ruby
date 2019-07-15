@@ -2,9 +2,7 @@
 # Code Generated: getResourceV2Info[Get reporting resource information]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class Getreportingresourceinformation

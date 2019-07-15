@@ -2,9 +2,7 @@
 # Code Generated: getSubscription[Get subscription for report name]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class Getsubscriptionforreportname

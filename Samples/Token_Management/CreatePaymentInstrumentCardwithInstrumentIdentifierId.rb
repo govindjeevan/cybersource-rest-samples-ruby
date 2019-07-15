@@ -2,49 +2,47 @@
 # Code Generated: createPaymentInstrument[Create Payment Instrument (Card with Instrument Identifier Id)]
 
 require 'cybersource_rest_client'
-require_relative '../VerifyToken.rb'
-require_relative '../KeyGenerationNoEnc.rb'
-require_relative '../../../data/Configuration.rb'
+require_relative '../../data/Configuration.rb'
 
 public
 class CreatePaymentInstrumentCardwithInstrumentIdentifierId
     def run(profileid)
         requestObj = CyberSource::CreatePaymentInstrumentRequest.new
         card = CyberSource::Tmsv1paymentinstrumentsCard.new
-        card.expirationMonth = "09"
-        card.expirationYear = "2017"
+        card.expiration_month = "09"
+        card.expiration_year = "2017"
         card.type = "visa"
-        card.issueNumber = "01"
-        card.startMonth = "01"
-        card.startYear = "2016"
+        card.issue_number = "01"
+        card.start_month = "01"
+        card.start_year = "2016"
         requestObj.card = card
 
-        buyerInformation = CyberSource::Tmsv1paymentinstrumentsBuyerInformation.new
-        buyerInformation.companyTaxID = "12345"
-        buyerInformation.currency = "USD"
-        requestObj.buyerInformation = buyerInformation
+        buyer_information = CyberSource::Tmsv1paymentinstrumentsBuyerInformation.new
+        buyer_information.company_tax_i_d = "12345"
+        buyer_information.currency = "USD"
+        requestObj.buyer_information = buyer_information
 
-        billTo = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo.new
-        billTo.firstName = "John"
-        billTo.lastName = "Smith"
-        billTo.company = "Cybersource"
-        billTo.address1 = "8310 Capital of Texas Highwas North"
-        billTo.address2 = "Bluffstone Drive"
-        billTo.locality = "Austin"
-        billTo.administrativeArea = "TX"
-        billTo.postalCode = "78731"
-        billTo.country = "United States"
-        billTo.email = "john.smith@test.com"
-        billTo.phoneNumber = "+44 2890447951"
-        requestObj.billTo = billTo
+        bill_to = CyberSource::TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo.new
+        bill_to.first_name = "John"
+        bill_to.last_name = "Smith"
+        bill_to.company = "Cybersource"
+        bill_to.address1 = "8310 Capital of Texas Highwas North"
+        bill_to.address2 = "Bluffstone Drive"
+        bill_to.locality = "Austin"
+        bill_to.administrative_area = "TX"
+        bill_to.postal_code = "78731"
+        bill_to.country = "United States"
+        bill_to.email = "john.smith@test.com"
+        bill_to.phone_number = "+44 2890447951"
+        requestObj.bill_to = bill_to
 
-        processingInformation = CyberSource::Tmsv1paymentinstrumentsProcessingInformation.new
-        processingInformation.billPaymentProgramEnabled = True
-        requestObj.processingInformation = processingInformation
+        processing_information = CyberSource::Tmsv1paymentinstrumentsProcessingInformation.new
+        processing_information.bill_payment_program_enabled = True
+        requestObj.processing_information = processing_information
 
-        instrumentIdentifier = CyberSource::Tmsv1paymentinstrumentsInstrumentIdentifier.new
-        instrumentIdentifier.id = "9000000000000000001003"
-        requestObj.instrumentIdentifier = instrumentIdentifier
+        instrument_identifier = CyberSource::Tmsv1paymentinstrumentsInstrumentIdentifier.new
+        instrument_identifier.id = "9000000000000000001003"
+        requestObj.instrument_identifier = instrument_identifier
 
         config = MerchantConfiguration.new.merchantConfigProp()
         api_client = CyberSource::ApiClient.new
